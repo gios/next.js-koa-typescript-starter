@@ -1,13 +1,16 @@
 {
   "name": "gios-blog",
   "version": "0.0.1",
-  "description": "Gios blog",
+  "description": "Gios blog.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier --write \"**/*.{ts,tsx}\"",
+    "prettier": "prettier --write \"**/*.{ts,tsx,js}\"",
     "tslint": "tslint --project tsconfig.json",
     "audit": "npm run tslint && npm run prettier",
+    "build-server": "tsc -p ./server/tsconfig.json",
+    "start-server": "npm run build-server && node ./server/dist/index.js",
+    "start-dev-server": "nodemon ./server/index.ts",
     "dev": "next",
     "build": "next build",
     "start": "next start"
@@ -28,15 +31,25 @@
   "homepage": "https://github.com/gios/blog#readme",
   "dependencies": {
     "@zeit/next-typescript": "^1.1.1",
+    "dotenv": "^6.2.0",
+    "koa": "^2.6.2",
+    "koa-helmet": "^4.0.0",
     "next": "^7.0.2",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "winston": "^3.1.0"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.0",
+    "@types/koa": "^2.0.47",
+    "@types/koa-helmet": "^3.1.2",
     "@types/next": "^7.0.5",
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",
+    "@types/winston": "^2.4.4",
+    "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
+    "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.2"
