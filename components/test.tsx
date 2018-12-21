@@ -18,7 +18,11 @@ export default class Test extends Component {
 
   private async initQuill () {
     const Quill = await import('quill')
-    const editor = new Quill.default(this.editorRef.current)
+    const editor = new Quill.default(this.editorRef.current, {
+      debug: 'info',
+      placeholder: 'Compose an epic...',
+      theme: 'snow'
+    })
     console.log("AAA ", editor)
   }
 }
